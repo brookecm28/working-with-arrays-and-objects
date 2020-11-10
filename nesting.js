@@ -44,7 +44,8 @@ var employees = [
 // Do not edit the code above.
 
 /*
-  Create a function called 'employeeUpdater' that takes no parameters. employeeUpdater will loop over the array above and perform the following:
+  Create a function called 'employeeUpdater' that takes no parameters. employeeUpdater will loop 
+  over the array above and perform the following:
     1. If employee's first name is Theo, remove that employee because he just got fired.
     2. If the employee's first name is Lorie, change her department to 'HR'.
     3. Return the updated employee array.
@@ -52,7 +53,17 @@ var employees = [
 
 //Code Here
 
+function employeeUpdater() {
+  const newList = employees.map(element => {
+    if (element.firstName === "Theo") {
+      delete(element)
+    } else if (element.firstName ==="Lorie") {
+      element.department="HR"
+    })
+  return newList
+}
 
+console.log(employeeUpdater(employees))
 
 ////////// PROBLEM 2 //////////
 
