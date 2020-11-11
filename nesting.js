@@ -53,14 +53,16 @@ var employees = [
 
 //Code Here
 
-function employeeUpdater() {
-  const newList = employees.map(element => {
-    if (element.firstName === "Theo") {
-      delete(element)
-    } else if (element.firstName ==="Lorie") {
-      element.department="HR"
-    })
-  return newList
+
+const employeeUpdater = () => {
+  employees.forEach((element, index, array) => {
+  if (element.firstName === "Theo") {
+    employees.splice(1, index)
+  } else if (element.firstName === "Lorie") {
+    employees[index].department = "HR"
+  } 
+})
+  return employees
 }
 
 console.log(employeeUpdater(employees))
@@ -73,16 +75,31 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 
 /*
   The array above represents IDs tied to reported workplace accidents. 
-  An employee accidentally entered in duplicates to array, making it look as though there are more accidents this year than there actually are.
-    1. Write a function called 'removeDuplicates' that will remove all duplicate entries in the workplaceAccidents array.
-    2. Use nested for loops to check for duplicate numbers, and then remove the duplicates from the array.
+  An employee accidentally entered in duplicates to array, making it look as though 
+  there are more accidents this year than there actually are.
+    1. Write a function called 'removeDuplicates' that will remove 
+       all duplicate entries in the workplaceAccidents array.
+    2. Use nested for loops to check for duplicate numbers, 
+       and then remove the duplicates from the array.
     3. Return the updated array.
 */
 
 //Code Here
 
+function removeDuplicates(arr) {
+  let noDupes = []
+  for (let i = 0; i <= arr.length; i++) {
+    for (let j = 0; j <= arr.length; j++) {
+      if (arr[i] === arr[j] && i !== j) {
+        noDupes = arr.splice(j, 1)
+      } else {}
+    }    
+  }
+  console.log(noDupes)
+  return noDupes
+}
 
-
+console.log(removeDuplicates(workplaceAccidents))
 ////////// PROBLEM 3 //////////
 
 // Do not edit the code below.
@@ -103,15 +120,17 @@ var cat = {
 
 /*
   Fluffy has two friends, Grumpy and Lazy Bones. 
-    1. Assign the value of Grumpy's 2nd activity to the grumpyActivity variable below.
+    1. Assign the value of Grumpy's 2nd activity to the 
+       grumpyActivity variable below.
     2. Assign fluffy2ndFriend the name of Fluffy's 2nd friend.
 */
 
 //Code Here
-var grumpyActivity;
-var fluffy2ndFriend;
+var grumpyActivity = cat.catFriends[0].activities[1]
+var fluffy2ndFriend = cat.catFriends[1].name
 
-
+console.log(grumpyActivity)
+console.log(fluffy2ndFriend)
 
 ////////// PROBLEM 4 //////////
 
@@ -141,9 +160,11 @@ var myCar = {
 // Do not edit the code above.
 
 /*
-  Above is some information about my car. As you can see, I am not the best driver.
+  Above is some information about my car. As you can see, 
+  I am not the best driver.
   I have caused a few accidents.
-  Please update this driving record so that I can feel better about my driving skills.
+  Please update this driving record so that I can feel better 
+  about my driving skills.
     1. Write a function called recordCleaner.
     2. Loop over the accidents array.
     3. Change atFaultForAccident from true to false.
@@ -151,6 +172,17 @@ var myCar = {
 
 //Code Here
 
+const recordCleaner = () => {
+  myCar.accidents.forEach((element, ind) => {
+    
+    if (element[ind].atFaultForAccident === true) {
+      element[ind].atFaultForAccident = false
+      console.log(element) 
+    } 
+    
+  })
+  return myCar
+}
 
 
 ////////// PROBLEM 5 //////////
@@ -170,4 +202,16 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 
 //Code Here
 
-
+function looper(arr) {
+  let values = []
+  for (let i = 0; i <= arr.length; i++) {
+    for (let j = 0; j <= arr.length; j++) {
+      if ((arr[i])[j] % 2 === 0) {
+        values.push("even") //change values to numsArr bc we need to be returning that
+      } else { //may need to remove arr as a parameter fr looper
+        values.push("odd")
+      }
+    }
+  }
+  return values
+}
