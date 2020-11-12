@@ -184,9 +184,9 @@ var myCar = {
 
 function recordCleaner () {
   for (let i = 0; i < myCar.accidents.length; i++) {
-    if (myCar.accidents[i].atFaultForAccident === 'true') {
+    if (myCar.accidents[i].atFaultForAccident === true) {
       console.log(myCar.accidents[i].atFaultForAccident)
-      myCar.accidents[i].atFaultForAccident = 'false'
+      myCar.accidents[i].atFaultForAccident = false
       console.log(myCar.accidents[i].atFaultForAccident)
     }
   }
