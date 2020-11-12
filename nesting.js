@@ -87,16 +87,16 @@ var workplaceAccidents = [12, 56, 44, 3, 29, 56, 56, 3, 7, 12];
 //Code Here
 
 function removeDuplicates(arr) {
-  let noDupes = []
+  // let noDupes = []
   for (let i = 0; i <= arr.length; i++) {
     for (let j = 0; j <= arr.length; j++) {
       if (arr[i] === arr[j] && i !== j) {
-        noDupes = arr.splice(j, 1)
+        arr.splice(j, 1)
       } else {}
     }    
   }
-  console.log(noDupes)
-  return noDupes
+  // console.log(noDupes)
+  return arr
 }
 
 console.log(removeDuplicates(workplaceAccidents))
@@ -172,15 +172,24 @@ var myCar = {
 
 //Code Here
 
-const recordCleaner = () => {
-  myCar.accidents.forEach((element, ind) => {
-    
-    if (element[ind].atFaultForAccident === true) {
-      element[ind].atFaultForAccident = false
-      console.log(element) 
-    } 
-    
-  })
+// const recordCleaner = () => {
+//   myCar.accidents.forEach((element, ind) => {
+//     if (element[ind].atFaultForAccident === true) {
+//       element[ind].atFaultForAccident = false
+//       console.log(element) 
+//     }
+//   })
+//   return myCar
+// }
+
+function recordCleaner () {
+  for (let i = 0; i < myCar.accidents.length; i++) {
+    if (myCar.accidents[i].atFaultForAccident === 'true') {
+      console.log(myCar.accidents[i].atFaultForAccident)
+      myCar.accidents[i].atFaultForAccident = 'false'
+      console.log(myCar.accidents[i].atFaultForAccident)
+    }
+  }
   return myCar
 }
 
@@ -202,16 +211,16 @@ var numsArr = [ [1, 2, 3, 4], [5, 6], [7, 8, 9, 10, 11]];
 
 //Code Here
 
-function looper(arr) {
-  let values = []
-  for (let i = 0; i <= arr.length; i++) {
-    for (let j = 0; j <= arr.length; j++) {
-      if ((arr[i])[j] % 2 === 0) {
-        values.push("even") //change values to numsArr bc we need to be returning that
-      } else { //may need to remove arr as a parameter fr looper
-        values.push("odd")
+function looper() {
+  // let values = []
+  for (let i = 0; i < numsArr.length; i++) {
+    for (let j = 0; j < numsArr[i].length; j++) {
+      if (numsArr[i][j] % 2 === 0) {
+        numsArr[i].splice(j, 1, "even") 
+      } else { 
+        numsArr[i].splice(j, 1, "odd")
       }
     }
   }
-  return values
+  return numsArr
 }
